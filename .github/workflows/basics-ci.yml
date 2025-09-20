@@ -15,16 +15,23 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: "3.12"
+      
       - name: Install dependencies
         run:  |
           make install
+        working-directory: test-make-lint-githubaction
+      
       - name: Lint with pylint
         run: |
           make lint
+        working-directory: test-make-lint-githubaction
+      
       - name: Test with pytest
         run: |
           make test
+        working-directory: test-make-lint-githubaction
       - name: format code
         run: |
           make format
+        working-directory: test-make-lint-githubaction
           
