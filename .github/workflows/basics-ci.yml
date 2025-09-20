@@ -1,8 +1,8 @@
 name: Python application test with github action
 
 on: 
-  push
-  workflow_dispatch
+  push:
+  workflow_dispatch:
 
 jobs:
  build:
