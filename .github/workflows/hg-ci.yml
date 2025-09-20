@@ -1,0 +1,21 @@
+name: Publish to Huggingface
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  sync-to-huggingface:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better performance
+      
+      - name: Push to Huggingface
+        env:
+          HG: ${{ secrets.HG }}
+        run: |
+          git config user.name "yorahman"
+          git config user.email "yorahmanusa@gmail.com"
+          git push --force https://yorahman:$HG@huggingface.co/spaces/yorahman/demo2 main
+        working-directory: huggingface-demo
